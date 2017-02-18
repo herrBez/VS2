@@ -2,7 +2,7 @@
 {Let $C$ and $A$ be complete lattices and let $(\alpha, C, A, \gamma)$ be a Galois connection. Prove the following properties:
 \begin{enumerate}
 	\item $\gamma(\alpha(\top_C)) = \top_C$
-	\item for any $a \in A, \gamma(a) = \wedge \{c \in C\ |\ \alpha(c) \leq_A a \}$ 
+	\item for any $a \in A, \gamma(a) = \vee_C \{c \in C\ |\ \alpha(c) \leq_A a \}$ 
 	\item for any $c_1, c_2 \in C, \alpha(c_1 \vee_C c_2) = \alpha(c_1) \vee_A \alpha(c_2)$
 	\item for any $c \in C, \gamma(\alpha(\gamma(\alpha(c)))) = \gamma(\alpha(c))$
 \end{enumerate}	
@@ -27,8 +27,39 @@
 	visto che valgono le diseguaglianze \ref{ex2:item:gamma:alpha:topC} e \ref{ex2:item:topC}, per l'antisimmetria del poset $(C, \leq_C)$ posso concludere
 	$\gamma(\alpha(\top_C)) = \top_C$.
 	\end{proof}
-	\item $\boxed{\forall a \in A, \gamma(a) = \wedge \{c \in C\ |\ \alpha(c) \leq_A a \}}$
+	\item $\boxed{\forall a \in A, \gamma(a) = \vee_C \{c \in C\ |\ \alpha(c) \leq_A a \}}$
+	
 	\item $\boxed{\forall c_1, c_2 \in C, \alpha(c_1 \vee_C c_2) = \alpha(c_1) \vee_A \alpha(c_2)}$
+	Siccome $C$ è un reticolo completo il sottoinsieme $\{c_1, c_2\}$ ha un lub che fa parte di $C$ (in ogni caso $\top_C$ è sempre un ub). Distinguo tre casi:
+	\begin{enumerate}
+		\item $c_1 \leq_C c_2$. Se vale questa relazione $c_1 \vee_C c_2 = c_2$ e quindi:
+		\begin{equation}
+		\label{ex2:eq:alpha(c1c2)}
+		\alpha(c_1 \vee_C c_2) = \alpha(c_2)
+		\end{equation}
+		Inoltre
+		$$
+		\begin{array}{lll}
+		c_1 \leq_C c_2 & \implies & \text{Monotonia di $\alpha$} \\
+		\alpha(c_1) \leq_A \alpha(c_2) & &\\
+		\end{array}
+		$$
+		Dunque il $lub(\{\alpha(c_1), \alpha(c_2)\}) = \alpha(c_2)$.
+		Grazie a quest'ultimo risultato e a $\ref{ex2:eq:alpha(c1c2)}$ l'asserto è dimostrato.
+		\item $c_2 \leq_C c_1$ riconducibile al precedente scambiando $c_1$ con $c_2$.
+		\item $\neg (c_1 \leq_C c_2) \land \neg (c_2 \leq_C c_1)$. Sia $c$ il lub di $\{c_1, c_2\}$
+		(Esiste perchè $C$ è un reticolo completo).
+		Siccome $c$ è lub valgono le relazioni:
+		\begin{itemize}
+			\item $c_1 \leq_C c \implies \alpha(c_1) \leq_A \alpha(c)$ per la monotonicità di $\alpha$
+			\item $c_2 \leq_C c \implies \alpha(c_2) \leq_A \alpha(c)$ per la monotonicità di $\alpha$.
+		\end{itemize}
+		Dimostro che $lub(\{\alpha(c_1), \alpha(c_2)\}) \leq lub(\{\alpha(c), \alpha(c)\}) = \alpha(c)$ che segue dalle due relazioni precedenti e dalla definizione di lub.
+		
+		\huge TODO dimostra $\alpha(c) \leq lub(\{\alpha(c_1), \alpha(c_2)\})$
+	\end{enumerate}
+	
+	
 	\item $\boxed{\forall c \in C, \gamma(\alpha(\gamma(\alpha(c)))) = \gamma(\alpha(c))}$
 	Dimostro le due diseguaglianze separatamente:
 	\begin{enumerate}
@@ -46,7 +77,7 @@
 		$$
 		che era la relazione da dimostrare.
 	\end{enumerate}
-	Ora siccome valgono le due relazioni per l'antisimmetria vale anche l'uguaglianza.
+	Ora siccome valgono le due relazioni, per l'antisimmetria di $\leq_C$ vale anche l'uguaglianza.
 \end{enumerate}
 	
 }
