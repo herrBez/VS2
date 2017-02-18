@@ -7,4 +7,46 @@
 	\item for any $c \in C, \gamma(\alpha(\gamma(\alpha(c)))) = \gamma(\alpha(c))$
 \end{enumerate}	
 }
-{}
+{
+\begin{enumerate}
+	\item $\boxed{\gamma(\alpha(\top_C)) = \top_C}$
+	\begin{proof}
+	Posso dimostrare le seguenti diseguaglianze per ottenere il risultato cercato:
+	\begin{enumerate}
+		\item
+		\label{ex2:item:gamma:alpha:topC}
+		$\gamma(\alpha(\top_C)) \leq_C \top_C$: Segue direttamente dal fatto che $\gamma:A \to C$.
+		Infatti $\gamma$ restituisce un valore in $C$ che è sicuramente minore o uguale a $\top_C$.
+		Il tutto vale perchè $\alpha$ e $\gamma$ sono funzioni totali.
+		
+		\item
+		\label{ex2:item:topC}
+		 $\top_C \leq_C \gamma(\alpha(\top_C))$: Segue direttamente dalla proprietà numero (3)
+		($\forall c \in C . c \leq_C \gamma(\alpha(c))$) della Galois Connection.
+	\end{enumerate}
+	visto che valgono le diseguaglianze \ref{ex2:item:gamma:alpha:topC} e \ref{ex2:item:topC}, per l'antisimmetria del poset $(C, \leq_C)$ posso concludere
+	$\gamma(\alpha(\top_C)) = \top_C$.
+	\end{proof}
+	\item $\boxed{\forall a \in A, \gamma(a) = \wedge \{c \in C\ |\ \alpha(c) \leq_A a \}}$
+	\item $\boxed{\forall c_1, c_2 \in C, \alpha(c_1 \vee_C c_2) = \alpha(c_1) \vee_A \alpha(c_2)}$
+	\item $\boxed{\forall c \in C, \gamma(\alpha(\gamma(\alpha(c)))) = \gamma(\alpha(c))}$
+	Dimostro le due diseguaglianze separatamente:
+	\begin{enumerate}
+		\item $\boxed{\forall c \in C .  \gamma(\alpha(c)) \leq_C \gamma(\alpha(\gamma(\alpha(c))))}$
+		segue direttamente dalla proprietà (4) e dalla totatilità di $\alpha$ e $\gamma$.
+		\item $\boxed{\forall c \in C . \gamma(\alpha(\gamma(\alpha(c)))) \leq_C \gamma(\alpha(c))}$
+		Per la proprietà (5) della Galois Connection (e la totalità di $\alpha$ e $\gamma$)vale la seguente relazione
+		$$
+		\alpha(\gamma(\alpha(c))) \leq_A \alpha(c) 
+		$$
+		vale per ogni $c$ perchè ogni $c$ viene mappato ad un $a$.
+		Per via della monotonia di $\gamma$ ottengo:
+		$$
+		\gamma(\alpha(\gamma(\alpha(c)))) \leq_C \gamma(\alpha(c))
+		$$
+		che era la relazione da dimostrare.
+	\end{enumerate}
+	Ora siccome valgono le due relazioni per l'antisimmetria vale anche l'uguaglianza.
+\end{enumerate}
+	
+}
