@@ -1,11 +1,66 @@
 \exercise{Esercizio 3}
-{Let C and A be complete lattices, $(\alpha, C, A, \gamma)$ be a Galois insertion, $op : C^2 \to C$ be a monotone concrete operation and $op^a : A_2 \to A$ be a monotone abstract operation. Prove the following equivalence:
+{Let C and A be complete lattices, $(\alpha, C, A, \gamma)$ be a Galois insertion, $op : C^2 \to C$ be a monotone concrete operation and $op^a : A^2 \to A$ be a monotone abstract operation. Prove the following equivalence:
 $$
 \begin{array}{c}
-	\forall (a_1, a_2) \in A^2\ .\ \alpha(op(\gamma(\alpha_1), \gamma(\alpha_2))) \leq_A op^a(a_1,a_2) \\
+	\forall (a_1, a_2) \in A^2\ .\ \alpha(op(\gamma(a_1), \gamma(a_2))) \leq_A op^a(a_1,a_2) \\
 	\iff \\
 	\forall (c_1, c_2) \in C^2\ .\ op(c_1, c_2) \leq_C \gamma(op^a(\alpha(c_1), \alpha(c_2)))
 \end{array}
 $$
 }
-{}
+{
+\begin{mydef}(Galois Insertion)
+Galois connection $+$ $\forall a \in A \alpha(\gamma(a)) = a$
+\end{mydef}
+
+Noto che $C^2$ e $A^2$ sono anch'essi dei reticoli completi:
+\begin{itemize}
+	\item $(C \times C, \leq_{C^2}, \sqcup_{C^2}, \bot_{C^2}, \top_{C^2})$
+	\item $(A \times A, \leq_{A^2}, \sqcup_{A^2}, \bot_{A^2}, \top_{A^2})$
+\end{itemize}
+\begin{proof}
+	Dimostro le due implicazioni separatamente.
+\begin{itemize}
+\item
+$\boxed{\implies}$ 
+Assumo che $\forall (a_1, a_2) \in A^2\ .  \alpha(op(\gamma(a_1), \gamma(a_2))) \leq_A op^a(a_1,a_2)$.
+$$
+\begin{array}{lr}
+	op(c_1, c_2) \leq_C & \text{Perchè $op(c_1, c_2) \in C$ e abbiamo una Galois connection}\\
+	\gamma(\alpha(op(c_1, c_2))) & \\
+\end{array}
+$$	
+Inoltre valgono le seguenti relazioni
+$$
+\begin{array}{l}
+c_1 \leq_C \gamma(\alpha(c_1))\\
+c_2 \leq_C \gamma(\alpha(c_2))\\
+\end{array}
+$$
+Siccome $op, \alpha, \gamma$ sono monotone
+$$
+\begin{array}{lr}
+op(c_1, c_2) \leq_C & \text{Perchè $op(c_1, c_2) \in C$ e abbiamo una Galois connection}\\
+\gamma(\alpha(op(c_1, c_2))) \leq_C & \text{Per le relazioni precedenti+$op, \alpha, \gamma$ sono monotone}\\
+\gamma(\alpha(op(\gamma(\alpha(c_1)), \gamma(\alpha(c_2) )))) & \text{Per l'assunzione e la monotonicità di $\gamma$}\\
+\gamma(op^A (\alpha(c_1), \alpha(c_2)))
+\end{array}
+$$
+
+\item $\boxed{\impliedby}$
+Assumo che $\forall (c_1, c_2) \in C^2\ .\ op(c_1, c_2) \leq_C \gamma(op^a(\alpha(c_1), \alpha(c_2)))$.
+
+$$
+\begin{array}{llr}
+\alpha(op(\gamma(a_1), \gamma(a_2))) & \leq_A & \text{Assunzione + monotonia di $\alpha$}\\
+\alpha(\gamma(op^a(\alpha(\gamma(a_1)),\ \alpha(\gamma(a_2))))) & = & \text{GI, i.e. $\alpha \circ \gamma = id$}\\
+op^a(\alpha(\gamma(a_1)),\ \alpha(\gamma(a_2))) & = & \alpha \circ \gamma = id\\
+op^a(a_1, a_2) & & \\
+\end{array}
+$$
+
+\end{itemize}
+\end{proof}
+
+
+}
