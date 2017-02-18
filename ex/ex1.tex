@@ -7,6 +7,59 @@
 	\end{enumerate} 
 }
 {
-
+	Alcune definizioni utili:
+	\begin{mydef}(Galois Connection)
+		$(\alpha, C, A, \gamma)$ è una Galois connection se:
+		\begin{enumerate}
+			\item A, C sono poset
+			\item $\alpha: C \longrightarrow A$ monotona
+			\item $\gamma: A \longrightarrow C$ monotona
+			\item $\forall c \in C.\ c \leq_C \gamma(\alpha(c))$
+			\item $\forall a \in A.\ \alpha(\gamma(a)) \leq_A a$
+		\end{enumerate}
+	\end{mydef}
+	\begin{mydef}(Funzione iniettiva)
+		Una funzione $f: X \longrightarrow Y$ è iniettiva se:
+		$$
+		\forall a, b \in X .\  f(a) = f(b) \implies a = b
+		$$
+	\end{mydef}
+	$\boxed{(B) \implies (A)}$
+	Assumo che valga l'ipotesi (B) ovvero che $\alpha \circ \gamma = id$.
+	Assumo per assurdo che non valga l'ipotesi (A) ovvero che $\gamma$ non sia iniettiva, quindi:
+	$$
+	\exists a, b \in A .\ \gamma(a) = \gamma(b) \land a \neq b
+	$$
+	Siano $a,b$ due elementi diversi di $A$ ($a \neq b$) che vengono mappati allo stesso elemento di $C$, ovvero $\gamma(a) = \gamma(b)$.
+	Essendo $(C, \leq_C)$ un poset, per la riflessività della relazione $\leq_C$, 
+	valgono anche le relazioni:
+	\begin{enumerate}[label=\Roman*)]
+		\item $\gamma(a) \leq_C \gamma(b)$ 
+		\label{item:gamma(a):leq:gamma(b)}
+		\item $\gamma(b) \leq_C \gamma(a)$
+		\label{item:gamma(b):leq:gamma(a)}
+	\end{enumerate}
+	
+	Partendo dalla relazione \ref{item:gamma(a):leq:gamma(b)} ottengo:
+	\begin{displaymath}
+	\begin{array}[\textwidth]{llr}
+	\gamma(a) \leq_C \gamma(b) 					& \implies & \text{per la monotonia di $\alpha$} \\
+	\alpha(\gamma(a)) \leq_A \alpha(\gamma(b))  & \implies & \text{per l'ipotesi (B)} \\
+	a \leq_A b									& \\
+	\end{array}
+	\end{displaymath}
+	
+	Partendo dalla relazione \ref{item:gamma(b):leq:gamma(a)} ottengo:
+	\begin{displaymath}
+	\begin{array}[\textwidth]{llr}
+	\gamma(b) \leq_C \gamma(a) 					& \implies & \text{per la monotonia di $\alpha$} \\
+	\alpha(\gamma(b)) \leq_A \alpha(\gamma(a))  & \implies & \text{per l'ipotesi (B)} \\
+	b \leq_A a									& \\
+	\end{array}
+	\end{displaymath}
+	Siccome valgono al contempo $a \leq_A b$ e $b \leq_A a$ allora per l'antisimmetria del poset $(A, \leq_A)$
+	$a = b$. Che è in contrasto con l'ipotesi iniziale che $a \neq b$.
+	
+	
 
 }
