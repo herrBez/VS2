@@ -6,4 +6,24 @@ $$
 Prove that $\langle S, \leq_C\rangle$ can be viewed as an abstract domain of $C$ where the concretization map 
 $\gamma : S \to C$ is the identity.
 }
-{}
+{
+Osservo che $\gamma$ è montona.
+Consideriamo $A = \langle S, \leq_C \rangle$ (per un qualsiasi $S$ meet-closed) questo è chiaramente un poset. L'ordinamento parziale
+deve essere coerente con la funzione di concretizzazione $\gamma$:
+$$
+x \leq_C y \iff \gamma(x) \leq_C \gamma(y) 
+$$	
+che è valido banalmente in quanto $\gamma$ è la funzione identità.
+Sia $\alpha: C \to S$ una funzione qualsiasi. Dimostro che valgono le relazioni per soddisfare
+la Galois Adjunction:
+$$
+\forall c \in C .\ \forall s \in S .\ \alpha(c) \leq_C s \iff c \leq_C \gamma(s)
+$$
+\begin{proof}
+	Dimostro le due inclusioni separatamente:
+	\begin{itemize}
+		\item $\boxed{\implies}$
+		\item $\boxed{\impliedby}$
+	\end{itemize}
+\end{proof}
+}
