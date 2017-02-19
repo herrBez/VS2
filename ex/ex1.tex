@@ -24,6 +24,10 @@
 		\forall a, b \in X .\  f(a) = f(b) \implies a = b
 		$$
 	\end{mydef}
+	
+	
+	
+	%% INIZIO DIMOSTRAZIONE (B) => (A)%
 	$\boxed{(B) \implies (A)}$
 	Assumo che valga l'ipotesi (B) ovvero che $\alpha \circ \gamma = id$.
 	Assumo per assurdo che non valga l'ipotesi (A) ovvero che $\gamma$ non sia iniettiva, quindi:
@@ -60,6 +64,58 @@
 	Siccome valgono al contempo $a \leq_A b$ e $b \leq_A a$ allora per l'antisimmetria del poset $(A, \leq_A)$
 	$a = b$. Che è in contrasto con l'ipotesi iniziale che $a \neq b$.
 	
+	%% INIZIO DIMOSTRAZIONE (A) => (C) %
+	$\boxed{(A) \implies (C)}$
+	Assumo $\gamma$ iniettiva, ovvero $\forall a,b \in A . \ \gamma(a) = \gamma(b) \implies a = b$.
+	Devo dimostrare che $\alpha$ suriettiva, ovvero:
+	$$
+	\forall a \in A .\ \exists c \in C .\ \alpha(c) = a
+	$$  
+	Per fare ciò assumo che $\alpha$ sia non suriettiva ovvero
+	$$
+	\exists a \in A .\ \forall c \in C .\ \alpha(c) \neq a
+	$$
+	e sia $a_0$ un elemento tale che $\alpha(c) \neq a_0 \forall c \in C$.
+	$$
+	\begin{array}{ll}
+	\alpha(\gamma(a_0)) \leq_A a_0 & \text{Siccome è una GC} \\
+	\gamma(\alpha(\gamma(a_0))) \leq_C \gamma(a_0) & \text{Poichè $\gamma$ monotona} \\	
+	\end{array}
+	$$
+	Inoltre siccome $\gamma(a_0) \in C$ vale 
+	$$
+	\gamma(a_0) \leq \gamma(\alpha(\gamma(a_0)))
+	$$
+	Quindi unendo i due risultati (per l'antisimmetria di $\leq_C$) ottengo:
+	$$
+	\begin{array}{ll}
+	\gamma(a_0) = \gamma(\alpha(\gamma(a_0))) & \text{Siccome $\gamma$ iniettiva} \\
+	a_0 = \alpha(\gamma(a_0)) & \text{Contraddizione}
+	\end{array}
+	$$
+	Avendo ottenuto una contraddizione ottengo che sotto l'assunzione $(A)$ non può esistere un $a_0 \in A$ tale che $\alpha(c) \neq a$ e quindi $\alpha$ è necessariamente suriettiva.
 	
-
+	
+	%% INIZIO (C) => (B)
+	$\boxed{(C) \implies (B)}$
+	Assumo $\alpha$ suriettiva ovvero:
+	$$
+	\forall a \in A . \ \exists c \in C . \ \alpha(c) = a
+	$$
+	Assumo che non valga (B) $\alpha \circ \gamma \neq id$ ovvero:
+	$$
+	\exists a \in A : \alpha(\gamma(a)) \neq a
+	$$
+	Sia $a_0$ tale che $\alpha(\gamma(a_0)) \neq a_0$.
+	Siccome $(\alpha, A, C, \gamma)$ è una $GC$ vale $\alpha(\gamma(a_0)) \leq a_0$.
+	Dimostrando $a_0 \leq_A \alpha(\gamma(a_0))$ otterrei una contraddizione.
+	
+	Siccome abbiamo a che fare con una $GC$ (e $\alpha, \gamma$ totali):
+	$$
+	\gamma(\alpha(a_0)) \leq_C \gamma(\alpha(\gamma(a_0))) 
+	$$
+	Se $\gamma$ fosse iniettiva seguirebbe immediatamente il risultato cercato, ovvero
+	$a_0 \leq (\alpha(\gamma(a_0)))$.
+	Dimostro che $\gamma$ debba per forza essere iniettiva:
+	\section{TODO: DIMOSTRA INIETTIVITÀ DI $\gamma$}
 }
